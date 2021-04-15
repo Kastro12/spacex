@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+    <meta charset="utf-8">
+    <meta name="description" content="description" />
+    <meta name="keywords" content="keywords" />
+    <meta name="robots" content="index,follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    {{ helmet.title.toString() }}
+    {{ helmet.meta.toString() }}
+    {{ helmet.link.toString() }}
+
+    <link rel="stylesheet" type="text/css" href="/{{ webpackAssets.main.css }}" />
+
+    {% for cssBundle in cssBundles %}
+    <link rel="stylesheet" type="text/css" href="{{ cssBundle }}" />
+    {% endfor %}
+</head>
+
+<body>
+
+    <div id="react-app">{{ reactApp }}</div>
+
+    <script>
+        {{ script }}
+    </script>
+
+    <script src="/{{ webpackAssets.runtime.js }}"></script>
+    <script src="/{{ webpackAssets.vendors.js }}"></script>
+    <script src="/{{ webpackAssets.main.js }}"></script>
+
+    {{ helmet.script.toString() }}
+
+    {% for jsBundle in jsBundles %}
+    <script src="{{ jsBundle }}"></script>
+    {% endfor %}
+</body>
+
+</html>
